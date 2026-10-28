@@ -1,0 +1,1647 @@
+/**
+ * DeepSeek Workspace (DSW) Official Design System Skin for Drawnix
+ * Grounded in DSH official tokens: --dsw-*
+ * Dual-Mode: Full Dark & Clean Light auto-adapting themes
+ * Zero ghosting, native contrast preservation, robust glassmorphism
+ */
+
+/* ================================================================
+   1. DSH Design System Tokens - Light & Dark Dual Modes
+   ================================================================ */
+
+/* Light Mode Defaults */
+:root,
+:root[data-theme="light"] {
+  --dsw-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --dsw-radius-sm: 6px;
+  --dsw-radius-md: 10px;
+  --dsw-radius-lg: 14px;
+
+  --dsw-brand-blue: #3b82f6;
+  --dsw-brand-blue-hover: #2563eb;
+  --dsw-brand-blue-dim: rgba(59, 130, 246, 0.12);
+
+  --dsw-bg-base: #ffffff;
+  --dsw-bg-card: #f8fafc;
+  --dsw-bg-overlay: rgba(255, 255, 255, 0.88);
+  --dsw-bg-overlay-hover: rgba(0, 0, 0, 0.05);
+
+  --dsw-text-primary: #1e1e1e;
+  --dsw-text-secondary: #64748b;
+  --dsw-text-dim: #94a3b8;
+
+  --dsw-border-subtle: rgba(0, 0, 0, 0.09);
+  --dsw-border-elevated: rgba(0, 0, 0, 0.12);
+  --dsw-shadow-island: 0 8px 24px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --dsw-shadow-menu: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05);
+
+  /* 白板文本双模态对比度变量 */
+  --dsw-canvas-text: #1e1e1e;
+  --dsw-root-text: #1e1e1e;
+
+  /* Drawnix 内部色板变量适配（浅色标准） */
+  --color-primary: #3b82f6 !important;
+  --color-primary-darker: #2563eb !important;
+  --color-primary-darkest: #1d4ed8 !important;
+  --color-primary-hover: #60a5fa !important;
+  --color-primary-light: rgba(59, 130, 246, 0.12) !important;
+  --color-brand-active: #3b82f6 !important;
+  --color-brand-hover: #3b82f6 !important;
+
+  --color-gray-90: #1e1e1e !important;
+  --color-gray-100: #0f172a !important;
+  --color-gray-80: #334155 !important;
+  --color-gray-70: #475569 !important;
+  --color-gray-60: #64748b !important;
+  --color-gray-50: #94a3b8 !important;
+  --color-gray-40: #cbd5e1 !important;
+  --color-gray-30: rgba(0, 0, 0, 0.14) !important;
+  --color-gray-20: rgba(0, 0, 0, 0.08) !important;
+  --color-gray-10: rgba(0, 0, 0, 0.04) !important;
+  --color-gray-85: #f1f5f9 !important;
+
+  --color-on-surface: #64748b !important;
+  --text-primary-color: #1e1e1e !important;
+  --color-text-primary: #1e1e1e !important;
+  --color-text-secondary: #64748b !important;
+  --icon-fill-color: #64748b !important;
+
+  --island-bg-color: rgba(255, 255, 255, 0.88) !important;
+  --island-border-color: rgba(0, 0, 0, 0.09) !important;
+  --shadow-island: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+
+  --toast-bg-color: rgba(255, 255, 255, 0.95) !important;
+  --toast-border-color: rgba(0, 0, 0, 0.1) !important;
+  --toast-text-color: #1e1e1e !important;
+  --dialog-border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 系统级深色模式（在未强制指定 light 时生效） */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --dsw-brand-blue: #4176e6;
+    --dsw-brand-blue-hover: #5686fe;
+    --dsw-brand-blue-dim: rgba(65, 118, 230, 0.22);
+
+    --dsw-bg-base: #151517;
+    --dsw-bg-card: #202024;
+    --dsw-bg-overlay: rgba(28, 28, 32, 0.85);
+    --dsw-bg-overlay-hover: rgba(255, 255, 255, 0.09);
+
+    --dsw-text-primary: #f9fafb;
+    --dsw-text-secondary: #979da6;
+    --dsw-text-dim: #6c7078;
+
+    --dsw-border-subtle: rgba(255, 255, 255, 0.12);
+    --dsw-border-elevated: rgba(255, 255, 255, 0.16);
+    --dsw-shadow-island: 0 8px 32px rgba(0, 0, 0, 0.42), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --dsw-shadow-menu: 0 16px 40px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.3);
+
+    /* 白板文本深色模式变量：常规文本亮白，根节点白底黑字 */
+    --dsw-canvas-text: #f9fafb;
+    --dsw-root-text: #1e1e1e;
+
+    --color-primary: #5686fe !important;
+    --color-primary-darker: #4176e6 !important;
+    --color-primary-darkest: #3264cf !important;
+    --color-primary-hover: #6b97fe !important;
+    --color-primary-light: rgba(65, 118, 230, 0.22) !important;
+    --color-brand-active: #5686fe !important;
+    --color-brand-hover: #5686fe !important;
+
+    --color-gray-90: #f9fafb !important;
+    --color-gray-100: #ffffff !important;
+    --color-gray-80: #e6e8eb !important;
+    --color-gray-70: #d0d3d8 !important;
+    --color-gray-60: #979da6 !important;
+    --color-gray-50: #7b8089 !important;
+    --color-gray-40: #555861 !important;
+    --color-gray-30: rgba(255, 255, 255, 0.18) !important;
+    --color-gray-20: rgba(255, 255, 255, 0.1) !important;
+    --color-gray-10: rgba(255, 255, 255, 0.08) !important;
+    --color-gray-85: #1c1c20 !important;
+
+    --color-on-surface: #979da6 !important;
+    --text-primary-color: #f9fafb !important;
+    --color-text-primary: #f9fafb !important;
+    --color-text-secondary: #979da6 !important;
+    --icon-fill-color: #979da6 !important;
+
+    --color-surface-lowest: #18181b !important;
+    --color-surface-low: #222226 !important;
+    --color-surface-mid: #2a2a30 !important;
+    --color-surface-high: rgba(65, 118, 230, 0.2) !important;
+    --color-surface-primary-container: rgba(65, 118, 230, 0.18) !important;
+    --color-on-primary-container: #5686fe !important;
+
+    --island-bg-color: rgba(28, 28, 32, 0.85) !important;
+    --island-border-color: rgba(255, 255, 255, 0.12) !important;
+    --shadow-island: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+
+    --toast-bg-color: rgba(28, 28, 32, 0.92) !important;
+    --toast-border-color: rgba(255, 255, 255, 0.14) !important;
+    --toast-text-color: #f9fafb !important;
+    --dialog-border-color: rgba(255, 255, 255, 0.14) !important;
+  }
+}
+
+/* 显式 data-theme="dark"（宿主环境派发或用户手动切换，绝对深色优先级） */
+:root[data-theme="dark"] {
+  --dsw-brand-blue: #4176e6;
+  --dsw-brand-blue-hover: #5686fe;
+  --dsw-brand-blue-dim: rgba(65, 118, 230, 0.22);
+
+  --dsw-bg-base: #151517;
+  --dsw-bg-card: #202024;
+  --dsw-bg-overlay: rgba(28, 28, 32, 0.85);
+  --dsw-bg-overlay-hover: rgba(255, 255, 255, 0.09);
+
+  --dsw-text-primary: #f9fafb;
+  --dsw-text-secondary: #979da6;
+  --dsw-text-dim: #6c7078;
+
+  --dsw-border-subtle: rgba(255, 255, 255, 0.12);
+  --dsw-border-elevated: rgba(255, 255, 255, 0.16);
+  --dsw-shadow-island: 0 8px 32px rgba(0, 0, 0, 0.42), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --dsw-shadow-menu: 0 16px 40px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.3);
+
+  /* 白板文本深色模式变量：常规文本亮白，根节点白底黑字 */
+  --dsw-canvas-text: #f9fafb;
+  --dsw-root-text: #1e1e1e;
+
+  --color-primary: #5686fe !important;
+  --color-primary-darker: #4176e6 !important;
+  --color-primary-darkest: #3264cf !important;
+  --color-primary-hover: #6b97fe !important;
+  --color-primary-light: rgba(65, 118, 230, 0.22) !important;
+  --color-brand-active: #5686fe !important;
+  --color-brand-hover: #5686fe !important;
+
+  --color-gray-90: #f9fafb !important;
+  --color-gray-100: #ffffff !important;
+  --color-gray-80: #e6e8eb !important;
+  --color-gray-70: #d0d3d8 !important;
+  --color-gray-60: #979da6 !important;
+  --color-gray-50: #7b8089 !important;
+  --color-gray-40: #555861 !important;
+  --color-gray-30: rgba(255, 255, 255, 0.18) !important;
+  --color-gray-20: rgba(255, 255, 255, 0.1) !important;
+  --color-gray-10: rgba(255, 255, 255, 0.08) !important;
+  --color-gray-85: #1c1c20 !important;
+
+  --color-on-surface: #979da6 !important;
+  --text-primary-color: #f9fafb !important;
+  --color-text-primary: #f9fafb !important;
+  --color-text-secondary: #979da6 !important;
+  --icon-fill-color: #979da6 !important;
+
+  --color-surface-lowest: #18181b !important;
+  --color-surface-low: #222226 !important;
+  --color-surface-mid: #2a2a30 !important;
+  --color-surface-high: rgba(65, 118, 230, 0.2) !important;
+  --color-surface-primary-container: rgba(65, 118, 230, 0.18) !important;
+  --color-on-primary-container: #5686fe !important;
+
+  --island-bg-color: rgba(28, 28, 32, 0.85) !important;
+  --island-border-color: rgba(255, 255, 255, 0.12) !important;
+  --shadow-island: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+
+  --toast-bg-color: rgba(28, 28, 32, 0.92) !important;
+  --toast-border-color: rgba(255, 255, 255, 0.14) !important;
+  --toast-text-color: #f9fafb !important;
+  --dialog-border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+/* ================================================================
+   2. 基础画布与系统字体设定
+   ================================================================ */
+
+body, .drawnix, .plait-board-container {
+  font-family: var(--dsw-font-family) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 画布背景色根据 DSH 主题动态切换（即时响应，禁止淡入过渡动画以防白闪） */
+.board-host-svg,
+.theme-dark .board-host-svg,
+.plait-board-container,
+.drawnix {
+  background-color: var(--dsw-bg-base) !important;
+}
+
+/* 隐藏空画布时的引导水印 */
+.drawnix-tutorial {
+  display: none !important;
+}
+
+/* 彻底隐藏 Drawnix 原生残缺主题切换器（防冲突防污染） */
+.drawnix .theme-toolbar {
+  display: none !important;
+}
+
+/* ================================================================
+   3. 顶部导航与底部创作 Dock 工具栏规范 (38px Medium Standard Tier)
+      - 顶部两端对齐：左侧全局导航（文档/历史），右侧视口缩放
+      - 底部居中悬浮：核心创作工具 Dock（画笔/形状/连线/文字等）
+   ================================================================ */
+
+.drawnix .app-toolbar,
+.drawnix .zoom-toolbar {
+  top: 12px !important;
+  z-index: 100 !important;
+}
+
+.drawnix .app-toolbar {
+  left: 12px !important;
+}
+
+.drawnix .zoom-toolbar {
+  right: 12px !important;
+}
+
+/* 底部居中悬浮创作 Dock (Bottom Creation Dock) */
+.drawnix .draw-toolbar,
+.drawnix--mobile.drawnix .draw-toolbar {
+  position: absolute !important;
+  top: auto !important;
+  bottom: 16px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 100 !important;
+}
+
+/* Drawnix 全局 Toast 提示上移避让底部 Dock */
+.drawnix .drawnix-toast-wrapper,
+.drawnix-toast-wrapper {
+  bottom: 68px !important;
+  z-index: 2023 !important;
+}
+
+/* 顶部悬浮胶囊外壳容器：标准 38px 高度，与画布浮动属性栏（popup-toolbar）高度完全一致 */
+.drawnix .app-toolbar.island,
+.drawnix .app-toolbar .island,
+.drawnix .draw-toolbar.island,
+.drawnix .draw-toolbar .island,
+.drawnix .zoom-toolbar.island,
+.drawnix .zoom-toolbar .island {
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  padding: 3px 4px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  border-radius: var(--dsw-radius-md) !important;
+}
+
+/* 内部 Stack 排版间距自然微展（3px 间距，呼吸感适中） */
+.drawnix .app-toolbar .stack,
+.drawnix .draw-toolbar .stack,
+.drawnix .zoom-toolbar .stack {
+  gap: 3px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+/* 按钮尺寸统一规范为 30px × 30px（比 26px 增大 4px，点击区域扩大 33%） */
+.drawnix .app-toolbar .tool-icon,
+.drawnix .app-toolbar .tool-icon__icon,
+.drawnix .app-toolbar .tool-icon_type_button,
+.drawnix .app-toolbar .menu-button,
+.drawnix .draw-toolbar .tool-icon,
+.drawnix .draw-toolbar .tool-icon__icon,
+.drawnix .draw-toolbar .tool-icon_type_button,
+.drawnix .zoom-toolbar .tool-icon,
+.drawnix .zoom-toolbar .tool-icon__icon,
+.drawnix .zoom-toolbar .tool-icon_type_button,
+.drawnix .zoom-toolbar .zoom-in-button,
+.drawnix .zoom-toolbar .zoom-out-button {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  max-width: 30px !important;
+  max-height: 30px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+/* SVG 图标尺寸优化为 17px × 17px，线条更清晰醒目，辨识度高 */
+.drawnix .app-toolbar .tool-icon__icon svg,
+.drawnix .app-toolbar svg,
+.drawnix .draw-toolbar .tool-icon__icon svg,
+.drawnix .draw-toolbar svg,
+.drawnix .zoom-toolbar .tool-icon__icon svg,
+.drawnix .zoom-toolbar svg {
+  width: 17px !important;
+  height: 17px !important;
+  max-width: 17px !important;
+  max-height: 17px !important;
+  flex-shrink: 0 !important;
+}
+
+/* 快捷键微型角标适配 */
+.drawnix .draw-toolbar .tool-icon .tool-icon__keybinding {
+  font-size: 9px !important;
+  line-height: 1 !important;
+  bottom: 2px !important;
+  right: 2.5px !important;
+  opacity: 0.65 !important;
+  font-weight: 500 !important;
+  pointer-events: none !important;
+}
+
+/* 缩放触发器（居中百分比，如 100%） */
+.drawnix .zoom-toolbar .zoom-menu-trigger {
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  line-height: 30px !important;
+  letter-spacing: -0.2px !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+
+/* 移除 zoom-toolbar 默认多余的直角截断，统一采用微圆角 */
+.drawnix .zoom-toolbar .zoom-out-button,
+.drawnix .zoom-toolbar .zoom-in-button {
+  border-radius: var(--dsw-radius-sm) !important;
+}
+
+/* ================================================================
+   4. 核心悬浮胶囊栏（.island）——DSH 官方级毛玻璃质感
+   ================================================================ */
+
+.drawnix .island {
+  background-color: var(--dsw-bg-overlay) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid var(--dsw-border-subtle) !important;
+  border-radius: var(--dsw-radius-md) !important;
+  box-shadow: var(--dsw-shadow-island) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 工具栏内按钮与图标精致化 */
+.drawnix .island .menu-button,
+.drawnix .island .drawnix-button,
+.drawnix .island .tool-icon_type_button,
+.drawnix .island .tool-icon,
+.drawnix .island .zoom-menu-trigger,
+.drawnix .island .zoom-in-button,
+.drawnix .island .zoom-out-button {
+  color: var(--dsw-text-secondary) !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: all 0.15s ease !important;
+}
+
+/* 按钮悬停交互微质感 */
+.drawnix .island .menu-button:hover,
+.drawnix .island .drawnix-button:hover,
+.drawnix .island .tool-icon_type_button:hover,
+.drawnix .island .tool-icon:hover,
+.drawnix .island .zoom-menu-trigger:hover,
+.drawnix .island .zoom-in-button:hover,
+.drawnix .island .zoom-out-button:hover {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+/* 激活选中态（DeepSeek Brand Blue 品牌蓝高亮） */
+.drawnix .island .menu-button.active,
+.drawnix .island .drawnix-button.active,
+.drawnix .island .tool-icon_type_button.tool-icon--selected,
+.drawnix .island .tool-icon--selected,
+.drawnix .island .zoom-menu-trigger.active,
+.drawnix .island .tool-icon .tool-icon_type_radio:checked + .tool-icon__icon,
+.drawnix .island .tool-icon .tool-icon_type_checkbox:checked + .tool-icon__icon {
+  background-color: var(--dsw-brand-blue-dim) !important;
+  color: var(--dsw-brand-blue-hover) !important;
+  border-color: var(--dsw-brand-blue-dim) !important;
+}
+
+.drawnix .island .tool-icon--selected svg,
+.drawnix .island .tool-icon_type_button.tool-icon--selected svg,
+.drawnix .island .menu-button.active svg,
+.drawnix .island .tool-icon .tool-icon_type_radio:checked + .tool-icon__icon svg,
+.drawnix .island .tool-icon .tool-icon_type_checkbox:checked + .tool-icon__icon svg {
+  color: var(--dsw-brand-blue-hover) !important;
+}
+
+/* 分割线微调 */
+.drawnix .island .island-divider {
+  background-color: var(--dsw-border-subtle) !important;
+}
+
+/* ================================================================
+   5. 汉堡菜单 / 右键菜单 / 子菜单 / 缩放菜单 深度适配
+   ================================================================ */
+
+/* 下拉菜单 & 子菜单容器（DSH 官方级高级毛玻璃通透质感，与工具栏完全一致） */
+.drawnix .menu .menu-container,
+.drawnix .menu .island {
+  background-color: var(--dsw-bg-overlay) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid var(--dsw-border-elevated) !important;
+  border-radius: var(--dsw-radius-md) !important;
+  box-shadow: var(--dsw-shadow-menu) !important;
+  padding: 6px !important;
+}
+
+/* 菜单项文字 & 链接 - 全状态严格锁定字号与字重，绝对杜绝悬停抖动/变大变粗 */
+.drawnix .menu .menu-item,
+.drawnix .menu .menu-item-base,
+.drawnix .menu .menu-item__text,
+.drawnix .menu .menu-item a,
+.drawnix .menu a.menu-item,
+.drawnix .menu .menu-item:hover,
+.drawnix .menu .menu-item--active,
+.drawnix .menu .menu-item:active {
+  color: var(--dsw-text-primary) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  letter-spacing: normal !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 消除所有焦点的默认黄橙色外边框 */
+.drawnix .menu .menu-item:focus,
+.drawnix .menu .menu-item:focus-visible,
+.drawnix .menu .menu-item-base:focus,
+.drawnix .menu .menu-item-base:focus-visible,
+.drawnix .menu button:focus,
+.drawnix .menu button:focus-visible,
+.drawnix .menu a:focus,
+.drawnix .menu a:focus-visible,
+.drawnix *:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 菜单项左侧图标 */
+.drawnix .menu .menu-item svg,
+.drawnix .menu .menu-item__left svg,
+.drawnix .menu .menu-item-bare svg {
+  color: var(--dsw-text-secondary) !important;
+  width: 15px !important;
+  height: 15px !important;
+  transition: color 0.15s ease !important;
+}
+
+/* 快捷键文本与二级菜单箭头 */
+.drawnix .menu .menu-item__shortcut,
+.drawnix .menu .menu-item__label,
+.drawnix .menu .menu-item__shortcut--orphaned,
+.drawnix .menu .menu-item__submenu-indicator svg {
+  color: var(--dsw-text-dim) !important;
+  opacity: 0.85 !important;
+}
+
+/* 菜单项悬停态 & 带有子菜单展开的父级项（如外观、Language） */
+.drawnix .menu .menu-item:hover,
+.drawnix .menu .menu-item--active {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  color: var(--dsw-text-primary) !important;
+  border-radius: var(--dsw-radius-sm) !important;
+}
+
+/* 仅在纯叶子选项（子菜单内的选中项，如：跟随系统/DSH、深色、浅色、中文等）应用品牌蓝选中态 */
+.drawnix .menu .menu-item--active:not(:has(.menu-item__submenu-indicator)) {
+  background-color: var(--dsw-brand-blue-dim) !important;
+  color: var(--dsw-brand-blue-hover) !important;
+}
+
+.drawnix .menu .menu-item--active:not(:has(.menu-item__submenu-indicator)) svg,
+.drawnix .menu .menu-item--active:not(:has(.menu-item__submenu-indicator)) .menu-item__left svg {
+  color: var(--dsw-brand-blue-hover) !important;
+}
+
+.drawnix .menu .menu-item:hover svg,
+.drawnix .menu .menu-item:hover .menu-item__left svg {
+  color: var(--dsw-text-primary) !important;
+}
+
+.drawnix .menu .menu-item:hover .menu-item__shortcut,
+.drawnix .menu .menu-item:hover .menu-item__submenu-indicator svg {
+  color: var(--dsw-text-secondary) !important;
+}
+
+/* 菜单项激活态 */
+.drawnix .menu .menu-item:active {
+  background-color: var(--dsw-brand-blue-dim) !important;
+  color: var(--dsw-brand-blue-hover) !important;
+  border-color: var(--dsw-brand-blue-dim) !important;
+}
+
+/* 菜单内设置项（如导出透明背景开关） */
+.drawnix .menu .menu-item--setting {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  margin-top: 6px !important;
+}
+
+.drawnix .menu .menu-item .menu-item-switch {
+  background-color: var(--dsw-border-elevated) !important;
+  border: 1px solid var(--dsw-border-subtle) !important;
+}
+
+.drawnix .menu .menu-item .menu-item-switch__thumb {
+  background-color: var(--dsw-text-secondary) !important;
+}
+
+.drawnix .menu .menu-item .menu-item-switch--checked {
+  background-color: var(--dsw-brand-blue) !important;
+  border-color: var(--dsw-brand-blue) !important;
+}
+
+.drawnix .menu .menu-item .menu-item-switch--checked .menu-item-switch__thumb {
+  background-color: #ffffff !important;
+}
+
+/* 菜单内分割线 */
+.drawnix .menu div[style*="height: 1px"],
+.drawnix .menu div[style*="height:1px"] {
+  background-color: var(--dsw-border-subtle) !important;
+  margin: 5px 6px !important;
+}
+
+/* ================================================================
+   6. Radix 下拉选择框与弹出浮动菜单适配
+   ================================================================ */
+
+.drawnix .dx-SelectTrigger {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  border: 1px solid var(--dsw-border-subtle) !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+.drawnix .dx-SelectTrigger:hover {
+  border-color: var(--dsw-border-elevated) !important;
+}
+
+.drawnix .dx-SelectContent {
+  background-color: var(--dsw-bg-overlay) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border: 1px solid var(--dsw-border-elevated) !important;
+  border-radius: var(--dsw-radius-md) !important;
+  box-shadow: var(--dsw-shadow-menu) !important;
+  padding: 4px !important;
+}
+
+.drawnix .dx-SelectItem {
+  color: var(--dsw-text-primary) !important;
+  border-radius: var(--dsw-radius-sm) !important;
+}
+
+.drawnix .dx-SelectItem[data-highlighted] {
+  background-color: var(--dsw-brand-blue-dim) !important;
+  color: var(--dsw-brand-blue-hover) !important;
+}
+
+/* ================================================================
+   7. 浮动属性面板（选中文本、图形时的属性工具栏）
+   【Apple / Figma 极简轻盈流线设计：单层毛玻璃胶囊 + Ghost 幽灵按键 + 经典无填充标】
+   ================================================================ */
+
+/* 浮动属性工具栏外层胶囊：轻盈、高透、圆润 */
+.drawnix .popup-toolbar,
+.drawnix .popup-toolbar.island,
+.drawnix .link-popup {
+  background-color: var(--dsw-bg-overlay) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid var(--dsw-border-elevated) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  color: var(--dsw-text-primary) !important;
+  padding: 4px 6px !important;
+  height: 38px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+}
+
+/* 按钮全部回归 Ghost 幽灵态：无静态重叠边框，悬停才亮起质感 */
+.drawnix .popup-toolbar .property-button,
+.drawnix .popup-toolbar .tool-icon,
+.drawnix .popup-toolbar .tool-icon_type_button,
+.drawnix .popup-toolbar button {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: var(--dsw-text-secondary) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+/* 悬停状态：轻微半透明微光 */
+.drawnix .popup-toolbar .property-button:hover,
+.drawnix .popup-toolbar .tool-icon:hover,
+.drawnix .popup-toolbar .tool-icon_type_button:hover,
+.drawnix .popup-toolbar button:hover {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+/* 激活选中态：品牌蓝强调 */
+.drawnix .popup-toolbar .tool-icon--selected,
+.drawnix .popup-toolbar .property-button.tool-icon--selected {
+  background-color: var(--dsw-brand-blue-dim) !important;
+  color: var(--dsw-brand-blue-hover) !important;
+}
+
+/* 字号调节输入框：扁平细腻内嵌样式（类似 macOS 原生步进器） */
+.drawnix .popup-toolbar .popup-font-size {
+  height: 28px !important;
+  min-height: 28px !important;
+  width: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: var(--dsw-text-primary) !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  border: 1px solid var(--dsw-border-subtle) !important;
+  padding: 0 3px !important;
+  box-sizing: border-box !important;
+  margin-right: 3px !important;
+  overflow: hidden !important;
+  transition: all 0.15s ease !important;
+}
+
+:root[data-theme="light"] .drawnix .popup-toolbar .popup-font-size {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.drawnix .popup-toolbar .popup-font-size:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--dsw-border-elevated) !important;
+}
+
+.drawnix .popup-toolbar .popup-font-size .popup-font-size__input {
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: var(--dsw-text-primary) !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  text-align: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+.drawnix .popup-toolbar .popup-font-size .popup-font-size__stepper {
+  width: 14px !important;
+  height: 26px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1px !important;
+}
+
+.drawnix .popup-toolbar .popup-font-size .popup-font-size__stepper-button {
+  width: 14px !important;
+  height: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--dsw-text-secondary) !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 2px !important;
+  transition: all 0.12s ease !important;
+}
+
+.drawnix .popup-toolbar .popup-font-size .popup-font-size__stepper-button:hover {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+.drawnix .popup-toolbar .popup-font-size .popup-font-size__stepper-icon {
+  width: 9px !important;
+  height: 9px !important;
+  display: block !important;
+}
+
+/* 描边色圆环与实心填充色圆盘：自然呼吸感 */
+.drawnix .popup-toolbar .property-button .stroke-label {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  border-width: 2.5px !important;
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+.drawnix .popup-toolbar .property-button .fill-label,
+.drawnix .popup-toolbar .property-button .color-label {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3), 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+}
+
+:root[data-theme="light"] .drawnix .popup-toolbar .property-button .fill-label,
+:root[data-theme="light"] .drawnix .popup-toolbar .property-button .color-label {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 【关键革新】透明/无填充色图标：经典设计软件通用的斜杠禁止圆环 ⊘ */
+.drawnix .popup-toolbar .background-color-icon {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid var(--dsw-text-secondary) !important;
+  background: linear-gradient(135deg, transparent 43%, #ef4444 44%, #ef4444 56%, transparent 57%) !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  margin: auto !important;
+  opacity: 0.9 !important;
+  transition: opacity 0.15s ease !important;
+}
+
+.drawnix .popup-toolbar .property-button:hover .background-color-icon {
+  opacity: 1 !important;
+  border-color: var(--dsw-text-primary) !important;
+}
+
+/* 隐藏原本发黑、粗糙且不可见的原生黑格子 SVG 子图元 */
+.drawnix .popup-toolbar .background-color-icon g,
+.drawnix .popup-toolbar .background-color-icon path,
+.drawnix .popup-toolbar .background-color-icon circle {
+  display: none !important;
+}
+
+/* 通用输入框与选择框 */
+.drawnix select,
+.drawnix input {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  border: 1px solid var(--dsw-border-subtle) !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  color: var(--dsw-text-primary) !important;
+  padding: 4px 8px !important;
+  outline: none !important;
+}
+
+.drawnix select option {
+  background-color: var(--dsw-bg-card) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+/* ================================================================
+   8. 模态弹窗适配（清除画布确认弹窗 & Mermaid / Markdown 导入弹窗）
+   ================================================================ */
+
+.drawnix .clean-confirm,
+.clean-confirm {
+  background-color: var(--dsw-bg-card) !important;
+  border: 1px solid var(--dsw-border-elevated) !important;
+  border-radius: var(--dsw-radius-md) !important;
+  box-shadow: var(--dsw-shadow-menu) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+.clean-confirm__title {
+  color: var(--dsw-text-primary) !important;
+}
+
+.clean-confirm__description {
+  color: var(--dsw-text-secondary) !important;
+}
+
+.clean-confirm__button--cancel {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  color: var(--dsw-text-primary) !important;
+  border: 1px solid var(--dsw-border-subtle) !important;
+}
+
+.clean-confirm__button--cancel:hover {
+  background-color: var(--dsw-border-elevated) !important;
+}
+
+.clean-confirm__button--ok {
+  background-color: #e5484d !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.clean-confirm__button--ok:hover {
+  background-color: #f2555a !important;
+}
+
+/* Mermaid / Markdown 大弹窗 */
+.drawnix .Dialog,
+.drawnix .Dialog.ttd-dialog {
+  background-color: var(--dsw-bg-card) !important;
+  border: 1px solid var(--dsw-border-elevated) !important;
+  border-radius: var(--dsw-radius-lg) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+.drawnix .ttd-dialog-desc {
+  color: var(--dsw-text-secondary) !important;
+}
+
+.drawnix .ttd-dialog-panel textarea {
+  background-color: var(--dsw-bg-base) !important;
+  color: var(--dsw-text-primary) !important;
+  border: 1px solid var(--dsw-border-subtle) !important;
+}
+
+.drawnix .ttd-dialog-output-wrapper {
+  background-color: var(--dsw-bg-base) !important;
+  border: 1px solid var(--dsw-border-subtle) !important;
+}
+
+.drawnix .ttd-dialog-tab-trigger {
+  color: var(--dsw-text-secondary) !important;
+}
+
+.drawnix .ttd-dialog-tab-trigger[data-state=active] {
+  color: var(--dsw-brand-blue-hover) !important;
+  border-bottom: 2px solid var(--dsw-brand-blue) !important;
+}
+
+.drawnix .ttd-dialog-panel-button.drawnix-button {
+  background-color: var(--dsw-brand-blue) !important;
+  color: #ffffff !important;
+}
+
+.drawnix .ttd-dialog-panel-button.drawnix-button:hover {
+  background-color: var(--dsw-brand-blue-hover) !important;
+}
+
+/* ================================================================
+   9. 节点与文本容器对比度自适应引擎
+   【关键修复：常规节点亮白文字，思维导图根节点白底黑字，消除暗黑下黑字隐形】
+   ================================================================ */
+
+/* 画布中常规文本（导图子分支、无底色自由文字）在深色模式下亮白，浅色模式下深黑 */
+.plait-board-container .plait-text-container,
+.plait-text-container,
+.slate-editable-container {
+  color: var(--dsw-canvas-text) !important;
+  caret-color: var(--dsw-canvas-text) !important;
+}
+
+/* 思维导图根节点（白底矩形背景），文字必须为深色保持黑白鲜明对比 */
+.plait-board-container .root .plait-text-container,
+.plait-board-container .mind-node.root .plait-text-container,
+.plait-board-container g.root .plait-text-container,
+.plait-board-container [class*="root"] .plait-text-container,
+.root .plait-text-container,
+.root .slate-editable-container {
+  color: var(--dsw-root-text) !important;
+  caret-color: var(--dsw-root-text) !important;
+}
+
+/* 几何图形与流程图节点：文字颜色默认自适应当前主题对比度（深色模式亮白，浅色模式深黑），杜绝暗黑下黑字隐形 */
+.plait-board-container [plait-geometry="true"] .plait-text-container,
+.plait-board-container [plait-geometry="true"] .slate-editable-container {
+  color: var(--dsw-canvas-text) !important;
+  caret-color: var(--dsw-canvas-text) !important;
+}
+
+/* 连线说明文字（arrow-line 标签）：解决 SVG foreignObject 边界硬截断导致最后一个汉字被切半的问题，并采用轻量无缝背景 */
+.plait-board-container [plait-arrow-line="true"] foreignObject {
+  overflow: visible !important;
+}
+
+.plait-board-container [plait-arrow-line="true"] .plait-text-container {
+  overflow: visible !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  box-sizing: border-box !important;
+  background: var(--dsw-canvas-bg, rgba(24, 24, 28, 0.92)) !important;
+  border: 1px solid var(--dsw-border-subtle, rgba(255, 255, 255, 0.1)) !important;
+  border-radius: 4px !important;
+  padding: 1px 6px !important;
+  margin-left: -6px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+  color: var(--dsw-canvas-text, #f1f5f9) !important;
+  white-space: nowrap !important;
+  line-height: 1.3 !important;
+}
+
+:root[data-theme="light"] .plait-board-container [plait-arrow-line="true"] .plait-text-container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  color: #1e293b !important;
+}
+
+
+
+
+/* ================================================================
+   11. 工作区多文档管理与落盘切换器（左上角一体化胶囊槽位规范）
+   ================================================================ */
+
+#dsh-doc-slot {
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 30px !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+#dsh-doc-slot:empty {
+  display: none !important;
+}
+#dsh-doc-slot:empty::before,
+#dsh-doc-slot:empty::after {
+  display: none !important;
+}
+
+/* 左右两根超细垂直分割线（16px 高，居中微透明），将文档名优雅包裹在菜单与撤销重做之间 */
+.dsh-doc-switcher::before,
+.dsh-doc-switcher::after,
+#dsh-doc-slot::before,
+#dsh-doc-slot::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background-color: var(--dsw-border-subtle);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+#dsh-doc-slot .dsh-doc-switcher::before,
+#dsh-doc-slot .dsh-doc-switcher::after {
+  display: none !important;
+}
+
+.dsh-doc-switcher {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: 100 !important;
+  user-select: none;
+  font-family: var(--dsw-font-family);
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.dsh-doc-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+  padding: 0 8px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  box-shadow: none !important;
+  color: var(--dsw-text-primary) !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  transition: all 0.15s ease !important;
+  outline: none;
+  box-sizing: border-box !important;
+}
+
+.dsh-doc-btn:hover {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  border-color: transparent !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+.dsh-doc-btn.open {
+  background-color: var(--dsw-brand-blue-dim) !important;
+  color: var(--dsw-brand-blue-hover) !important;
+  border-color: var(--dsw-brand-blue-dim) !important;
+}
+
+.dsh-doc-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--dsw-brand-blue);
+}
+
+.dsh-doc-icon-wrap svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.dsh-doc-title-text {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 12.5px;
+  color: inherit;
+}
+
+.dsh-doc-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--dsw-text-secondary);
+}
+
+.dsh-doc-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+
+.dsh-doc-status-dot.saving {
+  background-color: #f59e0b !important;
+  animation: dsh-pulse 1.2s infinite ease-in-out;
+}
+
+.dsh-doc-status-dot.offline {
+  background-color: var(--dsw-text-dim) !important;
+}
+
+@keyframes dsh-pulse {
+  0% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.4; transform: scale(0.9); }
+}
+
+.dsh-doc-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dsw-text-secondary);
+  transition: transform 0.2s ease;
+  margin-left: 1px;
+}
+
+.dsh-doc-chevron svg {
+  width: 11px;
+  height: 11px;
+}
+
+.dsh-doc-dropdown.open ~ .dsh-doc-btn .dsh-doc-chevron,
+.dsh-doc-btn.open .dsh-doc-chevron {
+  transform: rotate(180deg);
+}
+
+.dsh-doc-dropdown {
+  position: fixed !important;
+  width: 280px !important;
+  background-color: var(--dsw-bg-overlay) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid var(--dsw-border-elevated) !important;
+  border-radius: var(--dsw-radius-md) !important;
+  box-shadow: var(--dsw-shadow-menu) !important;
+  padding: 6px !important;
+  display: none;
+  flex-direction: column;
+  gap: 2px !important;
+  overflow: visible !important;
+  z-index: 999999 !important;
+}
+
+.dsh-doc-dropdown.open {
+  display: flex !important;
+}
+
+/* 窄视口智能响应截断与自适应 */
+@media (max-width: 720px) {
+  .dsh-doc-title-text {
+    max-width: 75px !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .dsh-doc-title-text {
+    display: none !important;
+  }
+  #dsh-doc-slot::before,
+  #dsh-doc-slot::after {
+    margin: 0 2px !important;
+  }
+}
+
+/* 顶部工作区说明区（去底色黑框，融入菜单流） */
+.dsh-doc-ws-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 6px 8px 8px 8px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--dsw-border-subtle) !important;
+  border-radius: 0 !important;
+  margin-bottom: 4px !important;
+}
+
+.dsh-doc-ws-info {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  gap: 2px !important;
+}
+
+.dsh-doc-ws-name {
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  color: var(--dsw-text-primary) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.dsh-doc-ws-name svg {
+  color: var(--dsw-brand-blue) !important;
+  flex-shrink: 0 !important;
+}
+
+.dsh-doc-ws-path {
+  font-size: 11px !important;
+  color: var(--dsw-text-dim) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  max-width: 210px !important;
+}
+
+.dsh-doc-refresh-btn {
+  background: transparent !important;
+  border: none !important;
+  padding: 4px !important;
+  border-radius: 4px !important;
+  color: var(--dsw-text-secondary) !important;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+.dsh-doc-refresh-btn:hover {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+.dsh-doc-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  max-height: 190px !important;
+  overflow-y: auto !important;
+  padding-right: 2px !important;
+}
+
+.dsh-doc-list-empty {
+  padding: 14px 8px !important;
+  text-align: center !important;
+  font-size: 12.5px !important;
+  color: var(--dsw-text-dim) !important;
+}
+
+/* 画板文件清单单项：对齐 [ ☰ ] 32px 行高与圆角 */
+.dsh-doc-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 0 8px !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  color: var(--dsw-text-primary) !important;
+  font-size: 13px !important;
+  cursor: pointer;
+  box-sizing: border-box !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+}
+
+.dsh-doc-item:hover {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+.dsh-doc-item.active {
+  background-color: var(--dsw-brand-blue-dim) !important;
+  color: var(--dsw-brand-blue-hover) !important;
+  font-weight: 500 !important;
+}
+
+.dsh-doc-item-main {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  overflow: hidden !important;
+}
+
+.dsh-doc-item-main svg {
+  color: var(--dsw-text-secondary) !important;
+}
+
+.dsh-doc-item.active .dsh-doc-item-main svg {
+  color: var(--dsw-brand-blue-hover) !important;
+}
+
+.dsh-doc-item-title {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.dsh-doc-item-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex-shrink: 0 !important;
+}
+
+.dsh-doc-ws-tag {
+  font-size: 10px !important;
+  line-height: 1.3 !important;
+  padding: 1px 5px !important;
+  border-radius: 4px !important;
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  border: 1px solid var(--dsw-border-subtle) !important;
+  color: var(--dsw-text-dim) !important;
+  max-width: 90px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+.dsh-doc-item.active .dsh-doc-ws-tag {
+  border-color: var(--dsw-brand-blue-dim) !important;
+  color: var(--dsw-brand-blue-hover) !important;
+  opacity: 0.9 !important;
+}
+
+.dsh-doc-item-check {
+  font-size: 13px !important;
+  color: var(--dsw-brand-blue) !important;
+  font-weight: 600 !important;
+}
+
+.dsh-doc-divider {
+  border: none !important;
+  border-top: 1px solid var(--dsw-border-subtle) !important;
+  margin: 4px 0 !important;
+}
+
+.dsh-doc-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+/* 操作项：对齐 [ ☰ ] 32px 行高与图标色彩 */
+.dsh-doc-action-opt {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  padding: 0 8px !important;
+  border-radius: var(--dsw-radius-sm) !important;
+  color: var(--dsw-text-primary) !important;
+  font-size: 13px !important;
+  cursor: pointer;
+  box-sizing: border-box !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+}
+
+.dsh-doc-action-opt svg {
+  color: var(--dsw-text-secondary) !important;
+  transition: color 0.15s ease !important;
+}
+
+.dsh-doc-action-opt:hover {
+  background-color: var(--dsw-bg-overlay-hover) !important;
+  color: var(--dsw-text-primary) !important;
+}
+
+.dsh-doc-action-opt:hover svg {
+  color: var(--dsw-text-primary) !important;
+}
+
+/* 具有二级子菜单的父级操作项 */
+.dsh-has-submenu {
+  position: relative !important;
+  user-select: none !important;
+}
+
+.dsh-submenu-arrow {
+  margin-left: auto !important;
+  color: var(--dsw-text-dim) !important;
+  opacity: 0.85 !important;
+  transition: color 0.15s ease !important;
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 15px !important;
+  height: 15px !important;
+  transform: none !important;
+}
+
+.dsh-has-submenu:hover .dsh-submenu-arrow,
+.dsh-has-submenu.dsh-submenu-active .dsh-submenu-arrow {
+  color: var(--dsw-text-secondary) !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 二级级联子菜单面板（与一级菜单完全一致的高质量独立毛玻璃） */
+.dsh-doc-submenu {
+  position: fixed !important;
+  width: 228px !important;
+  background-color: var(--dsw-bg-overlay) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid var(--dsw-border-elevated) !important;
+  border-radius: var(--dsw-radius-md) !important;
+  box-shadow: var(--dsw-shadow-menu) !important;
+  padding: 6px !important;
+  display: none;
+  flex-direction: column !important;
+  gap: 2px !important;
+  z-index: 9999999 !important;
+  cursor: default !important;
+  overflow: visible !important;
+}
+
+.dsh-doc-submenu.open {
+  display: flex !important;
+}
+
+/* 悬停展开状态控制 */
+.dsh-has-submenu:hover > .dsh-doc-submenu,
+.dsh-has-submenu.dsh-submenu-active > .dsh-doc-submenu,
+.dsh-doc-submenu.open {
+  display: flex !important;
+}
+
+/* 危险破坏性操作选项（删除当前画板） */
+.dsh-doc-action-opt.dsh-opt-danger {
+  color: #ff6b6b !important;
+}
+
+.dsh-doc-action-opt.dsh-opt-danger svg {
+  color: #ff6b6b !important;
+}
+
+.dsh-doc-action-opt.dsh-opt-danger:hover {
+  background-color: rgba(255, 107, 107, 0.15) !important;
+  color: #ff8787 !important;
+}
+
+.dsh-doc-action-opt.dsh-opt-danger:hover svg {
+  color: #ff8787 !important;
+}
+
+/* 警告操作选项（清空画布） */
+.dsh-doc-action-opt.dsh-opt-warning {
+  color: #fcc419 !important;
+}
+
+.dsh-doc-action-opt.dsh-opt-warning svg {
+  color: #fcc419 !important;
+}
+
+.dsh-doc-action-opt.dsh-opt-warning:hover {
+  background-color: rgba(252, 196, 25, 0.14) !important;
+  color: #ffd43b !important;
+}
+
+.dsh-doc-action-opt.dsh-opt-warning:hover svg {
+  color: #ffd43b !important;
+}
+
+/* 浅色主题下的高可读性颜色适配 */
+:root[data-theme="light"] .dsh-doc-action-opt.dsh-opt-danger {
+  color: #e03131 !important;
+}
+:root[data-theme="light"] .dsh-doc-action-opt.dsh-opt-danger svg {
+  color: #e03131 !important;
+}
+:root[data-theme="light"] .dsh-doc-action-opt.dsh-opt-warning {
+  color: #d97706 !important;
+}
+:root[data-theme="light"] .dsh-doc-action-opt.dsh-opt-warning svg {
+  color: #d97706 !important;
+}
+
+/* Modal Dialog */
+.dsh-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.dsh-modal-backdrop.open {
+  display: flex !important;
+}
+
+.dsh-modal-card {
+  width: 100%;
+  max-width: 320px;
+  background-color: var(--dsw-bg-overlay);
+  backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid var(--dsw-border-elevated);
+  border-radius: var(--dsw-radius-lg);
+  box-shadow: var(--dsw-shadow-menu);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: dsh-modal-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dsh-modal-in {
+  from { opacity: 0; transform: scale(0.96) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.dsh-modal-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dsw-text-primary);
+  margin: 0;
+}
+
+.dsh-modal-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.dsh-modal-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 75px 8px 12px;
+  background-color: var(--dsw-bg-base);
+  border: 1px solid var(--dsw-border-elevated);
+  border-radius: var(--dsw-radius-sm);
+  color: var(--dsw-text-primary);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dsh-modal-suffix {
+  position: absolute;
+  right: 12px;
+  font-size: 12px;
+  color: var(--dsw-text-dim);
+  font-weight: 500;
+  pointer-events: none;
+  user-select: none;
+  font-family: monospace;
+}
+
+.dsh-modal-input:focus {
+  border-color: var(--dsw-brand-blue);
+  box-shadow: 0 0 0 2px var(--dsw-brand-blue-dim);
+}
+
+.dsh-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--dsw-text-secondary);
+}
+
+.dsh-modal-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.dsh-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.dsh-btn {
+  padding: 6px 14px;
+  font-size: 12.5px;
+  border-radius: var(--dsw-radius-sm);
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+}
+
+.dsh-btn-secondary {
+  background-color: var(--dsw-bg-overlay-hover);
+  color: var(--dsw-text-primary);
+}
+
+.dsh-btn-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dsh-btn-primary {
+  background-color: var(--dsw-brand-blue);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.dsh-btn-primary:hover {
+  background-color: var(--dsw-brand-blue-hover);
+}
+
+.dsh-btn-danger {
+  background-color: #e03131 !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+.dsh-btn-danger:hover {
+  background-color: #c92a2a !important;
+}
+
+.dsh-btn-warning {
+  background-color: #d97706 !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+.dsh-btn-warning:hover {
+  background-color: #b45309 !important;
+}
