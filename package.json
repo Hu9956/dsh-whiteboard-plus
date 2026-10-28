@@ -1,6 +1,6 @@
 {
   "name": "@kewen/dsh-whiteboard-plus",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "private": true,
   "description": "DSH 白板 Plus：基于无限画布的思维导图、架构图设计与 AI 绘图协同工作台。",
   "type": "module",
